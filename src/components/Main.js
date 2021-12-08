@@ -4,6 +4,12 @@ import {makeStyles} from '@material-ui/styles';
 import ArticleCard from './Card'
 import axios from "axios";
 import Header from "./Header";
+import HistorySlider from "./HistorySlider";
+import { useText } from "../contexts/TextProvider";
+
+
+
+
 
 const useStyles = makeStyles({
     MainContainer: {
@@ -25,12 +31,20 @@ const MainContent = () => {
         return initialValue || [];
     });
 
+    const dispatchNewText = useText().dispatch;
+
+
+
+
     // useEffect( () => {
     //     const dataFromStorage = window.localStorage.getItem('searchHistory');
     //     setName(JSON.parse(dataFromStorage))
-    // },[])
+    // },[name])
 
     const handleSearch = searchText => {
+        const payload = searchText;
+        dispatchNewText({ type: "NEW_SEARCH_TEXT", payload });
+
         const endpoint = `https://${language}.wikipedia.org/w/rest.php/v1/search/page`;
         const config = {
             params: {
@@ -46,7 +60,7 @@ const MainContent = () => {
                 })
 
 
-        setName(name.push(searchText));
+        setName(name.push(searchText));  // Tu chyba coś nie halo jest ???
 
 
 
@@ -74,7 +88,7 @@ const MainContent = () => {
     return (
         <Grid container direction="column">
             <Grid item>
-                <Header changeFunc={handleSearch} setLanguageFunc ={handleLanguage}/>
+                <Header  setLanguageFunc ={handleLanguage}/>
             </Grid>
             <Grid item container>
                 <Grid item xs={false} sm={2}/>
@@ -85,6 +99,9 @@ const MainContent = () => {
                 </Grid>
                 <Grid item xs={false} sm={2}/>
             </Grid>
+
+
+            <HistorySlider/>
         </Grid>
     )
 };

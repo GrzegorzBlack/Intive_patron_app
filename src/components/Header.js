@@ -12,11 +12,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import {useState} from "react";
-
+import { useText } from "../contexts/TextProvider";
+import { useLocal } from "../contexts/LocalStorageProvider";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import axios from "axios";
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -64,13 +66,22 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-const Header =({changeFunc, setLanguageFunc})=> {
+const Header =({ setLanguageFunc})=> {
 const [colorOne, setColorOne]=useState('secondary');
 const [colorTwo, setColorTwo]=useState('primary');
+
 const [input, setInput] = useState('');
 
 
     const [age, setAge] = React.useState('');
+
+    const dispatchNewText = useText().dispatch;
+    const stateOfText = useText().state;
+
+
+    const dispatchLocal = useLocal().dispatch;
+    const stateOfLocal = useLocal().state;
+
 
     const handleChange = (event) => {
         setAge(event.target.value);
@@ -87,10 +98,42 @@ const [input, setInput] = useState('');
          setLanguageFunc();
      }
 
+    const handleSearchAPI = stateOfText => {
+        dispatchNewText({ type: "NEW_SEARCH_TEXT", payload: stateOfText});
+
+        const endpoint = `https://en.wikipedia.org/w/rest.php/v1/search/page`;
+        const config = {
+            params: {
+                q: stateOfText,
+                limit: 20
+            }
+        }
+        axios.get(endpoint, config)
+            .then((res, err) => {
+                const data = res.data;
+                const localStorageArray = data.pages;
+                dispatchLocal({ type: "SEARCHED_DATA", localStorageArray });
+                //console.log(data)
+            })
+
+        stateOfLocal.push(stateOfText);
+        console.log(stateOfLocal)
+        window.localStorage.setItem('searchHistory', JSON.stringify(stateOfText));
+    }
+
+
+
+
+
+
     const handleSearch = e => {
         if (e.keyCode === 13) {
-            changeFunc(input);
-            setInput('')
+            console.log(`Działa ${stateOfText} aaa`)
+            dispatchNewText({ type: "NEW_SEARCH_TEXT", payload: input });
+
+            handleSearchAPI("water");
+            // const payload = '';
+            dispatchNewText({ type: "NEW_SEARCH_TEXT", payload: '' });
         }
     }
 
