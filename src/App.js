@@ -1,9 +1,11 @@
-import './App.css';
-
-import MainContent from "./components/Main";
+import React from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Page from "./components/Page";
+
 import Providers from "./components/Providers";
+import MainContent from "./components/Main";
+import Page from "./components/Page";
+
+import './App.css';
 
 function App() {
   return (

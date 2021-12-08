@@ -1,14 +1,19 @@
-import TextProvider from "../contexts/TextProvider";
-import LocalStorageProvider from "../contexts/LocalStorageProvider";
 
+import {SearchTextsProvider} from "../contexts/SearchTextsContext";
+import {LanguageProvider} from "../contexts/LanguageContext";
+import {SearchParamsProvider} from "../contexts/SearchParamsContext";
 
 const Providers = (props) => {
     return (
         // <AdminProvider>
         //     <UserProvider>
-                <LocalStorageProvider>
-                    <TextProvider>{props.children}</TextProvider>
-               </LocalStorageProvider>
+                <SearchTextsProvider>
+                  <SearchParamsProvider>
+                    <LanguageProvider>
+                        {props.children}
+                    </LanguageProvider>
+                  </SearchParamsProvider>
+               </SearchTextsProvider>
         /*    </UserProvider>*/
         /*</AdminProvider>*/
     );

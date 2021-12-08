@@ -1,13 +1,10 @@
 import * as React from 'react';
 
 import Box from '@mui/material/Box';
-import Switch from '@mui/material/Switch';
-import Paper from '@mui/material/Paper';
 import Slide from '@mui/material/Slide';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import IconButton from '@mui/material/IconButton';
 import HistoryIcon from '@mui/icons-material/History';
-import {Button, List} from "@material-ui/core";
 import SearchedText from "./SearchedText";
 
 
@@ -24,21 +21,21 @@ import SearchedText from "./SearchedText";
 // </Box>
 
 
-const icon = (
-    <Paper sx={{ m: 1 }} elevation={4}>
-        <Box component="svg" sx={{ width: 100, height: 100 }}>
-            <Box
-                component="polygon"
-                sx={{
-                    fill: (theme) => theme.palette.common.white,
-                    stroke: (theme) => theme.palette.divider,
-                    strokeWidth: 1,
-                }}
-                points="0,100 50,00, 100,100"
-            />
-        </Box>
-    </Paper>
-);
+// const icon = (
+//     <Paper sx={{ m: 1 }} elevation={4}>
+//         <Box component="svg" sx={{ width: 100, height: 100 }}>
+//             <Box
+//                 component="polygon"
+//                 sx={{
+//                     fill: (theme) => theme.palette.common.white,
+//                     stroke: (theme) => theme.palette.divider,
+//                     strokeWidth: 1,
+//                 }}
+//                 points="0,100 50,00, 100,100"
+//             />
+//         </Box>
+//     </Paper>
+// );
 
 export default function HistorySlider() {
     const [checked, setChecked] = React.useState(false);

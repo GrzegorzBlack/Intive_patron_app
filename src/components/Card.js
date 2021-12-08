@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import noImage from '../utility/noImage.jpg';
+import noImage from '../assets/noImage.jpg';
 
 
 
