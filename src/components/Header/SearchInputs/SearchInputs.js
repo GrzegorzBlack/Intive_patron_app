@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, {useContext, useEffect} from "react";
 
 import SearchIcon from "@mui/icons-material/Search";
 import MenuItem from "@mui/material/MenuItem";
@@ -63,6 +63,11 @@ const SearchInputs = () => {
   const [searchTexts, setSearchTexts] = useContext(SearchTextsContext);
 
 
+
+  useEffect( () => {
+    window.localStorage.setItem('searchHistory', JSON.stringify(searchTexts));
+
+  },[searchTexts])
 
   const handleChangeLimits = e => {
     setSearchParams({
