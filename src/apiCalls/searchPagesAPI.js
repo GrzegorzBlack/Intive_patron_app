@@ -8,6 +8,8 @@ const searchPagesAPI = (searchText, limit, language, handleSearchResults) => {
       limit: limit
     }
   }
+
+  console.log(config)
   axios.get(endpoint, config)
     .then((res, err) => {
       const data = res.data;

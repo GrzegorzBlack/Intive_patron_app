@@ -2,11 +2,12 @@
 import {SearchTextsProvider} from "../contexts/SearchTextsContext";
 import {LanguageProvider} from "../contexts/LanguageContext";
 import {SearchParamsProvider} from "../contexts/SearchParamsContext";
+import {PageLanguageProvider} from "../contexts/PageLanguageContext";
 
 const Providers = (props) => {
     return (
         // <AdminProvider>
-        //     <UserProvider>
+             <PageLanguageProvider>
                 <SearchTextsProvider>
                   <SearchParamsProvider>
                     <LanguageProvider>
@@ -14,7 +15,7 @@ const Providers = (props) => {
                     </LanguageProvider>
                   </SearchParamsProvider>
                </SearchTextsProvider>
-        /*    </UserProvider>*/
+            </PageLanguageProvider>
         /*</AdminProvider>*/
     );
 };

@@ -118,7 +118,7 @@ const SearchInputs = () => {
           <InputLabel>Search limits</InputLabel>
           <Select
             value={searchParams.limit}
-            label="Age"
+            label="Limit"
             onChange={handleChangeLimits}
           >
             <MenuItem value={10}>10</MenuItem>
