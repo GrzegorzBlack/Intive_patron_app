@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const searchPagesAPI = (searchText, limit, language, handleSearchResults) => {
+const searchPagesAPI = (searchText, limit, language, resultCallback) => {
   const endpoint = `https://${language}.wikipedia.org/w/rest.php/v1/search/page`;
   const config = {
     params: {
@@ -9,11 +9,10 @@ const searchPagesAPI = (searchText, limit, language, handleSearchResults) => {
     }
   }
 
-  console.log(config)
   axios.get(endpoint, config)
     .then((res, err) => {
       const data = res.data;
-      handleSearchResults(data.pages);
+      resultCallback(data.pages);
     })
 }
 

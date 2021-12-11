@@ -138,6 +138,7 @@ const SearchInputs = () => {
           value={searchParams.searchText}
           onChange={handleSearchTextChange}
           placeholder="Search…"
+
         />
       </Search>
     </>
