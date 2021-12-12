@@ -1,8 +1,7 @@
-import React, {useContext, useState} from "react";
+import React, { useContext } from "react";
 import {ListItem, ListItemSecondaryAction, ListItemText} from "@mui/material";
 import {List} from "@material-ui/core";
 
-import {handleSearch} from "../utility/handeSearchFunction";
 import {SearchTextsContext} from "../contexts/SearchTextsContext";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import IconButton from "@mui/material/IconButton";
@@ -78,7 +77,7 @@ const mappedList = searchTexts.filter(onlyUnique).map(text => (
     <ListItem button onDoubleClick={() => handleSearch(text)} key={text}>
         <ListItemText primary={text}/>
             <ListItemSecondaryAction>
-                <IconButton onClick={() => handleDelete(text)}>
+                <IconButton onClick={() => handleDelete(text)} >
                     <DeleteForeverIcon />
                 </IconButton>
             </ListItemSecondaryAction>
