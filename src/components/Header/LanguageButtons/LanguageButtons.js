@@ -145,10 +145,11 @@ const Child =()=> {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <Button onClick={handleOpen}  className={classes.root} style={{cursor: 'default' }}><Avatar
+            <Button onClick={handleOpen}   sx={{ "&:hover": { backgroundColor: "transparent" }, cursor: 'default' } }><Avatar
                 alt="logo"
                 src={IntiveLogo}
                 style={{height: '60px', width: '60px',cursor: 'default'}}
+
             /></Button>
             <Modal
                 hideBackdrop
@@ -158,11 +159,11 @@ const Child =()=> {
                 aria-describedby="child-modal-description"
             >
                 <Box sx={{ ...style, width: 200 }}>
-                    <h2 id="child-modal-title">Text in a child modal</h2>
+                    <h2 id="child-modal-title">Znowu to zrobiłeś!</h2>
                     <p id="child-modal-description">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        20 punktów dla Griffindoru!
                     </p>
-                    <Button onClick={handleClose}>Close Child Modal</Button>
+                    <Button onClick={handleClose}>Zamknij wiadomość</Button>
                 </Box>
             </Modal>
         </React.Fragment>
@@ -197,9 +198,9 @@ export const Nested =()=> {
                 aria-describedby="parent-modal-description"
             >
                 <Box sx={{ ...style, width: 400 }}>
-                    <h2 id="parent-modal-title">Text in a modal</h2>
+                    <h2 id="parent-modal-title">Gratulacje!</h2>
                     <p id="parent-modal-description">
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        Udało Ci się znaleźć sekret! 10 punktów dla Griffindoru!
                     </p>
                     <Child />
                 </Box>
