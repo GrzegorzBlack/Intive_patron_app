@@ -2,10 +2,12 @@ import React, {useContext} from "react";
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
+import {makeStyles} from "@material-ui/core";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-
+import IntiveLogo from "../../../assets/intive_logo.jpg";
 import {LanguageContext} from "../../../contexts/LanguageContext";
+import {Avatar} from "@material-ui/core";
 
 export const LanguageButtons = () => {
     const [language, setLanguage] = useContext(LanguageContext);
@@ -123,7 +125,16 @@ const style = {
     pb: 3,
 };
 
+const useStyles = makeStyles({
+    root: {
+        "&:hover": {
+            backgroundColor: "transparent"
+        }
+    }
+});
+
 const Child =()=> {
+
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
         setOpen(true);
@@ -131,10 +142,14 @@ const Child =()=> {
     const handleClose = () => {
         setOpen(false);
     };
-
+    const classes = useStyles();
     return (
         <React.Fragment>
-            <Button onClick={handleOpen}>Open Child Modal</Button>
+            <Button onClick={handleOpen}  className={classes.root} style={{cursor: 'default' }}><Avatar
+                alt="logo"
+                src={IntiveLogo}
+                style={{height: '60px', width: '60px',cursor: 'default'}}
+            /></Button>
             <Modal
                 hideBackdrop
                 open={open}
@@ -165,14 +180,14 @@ export const Nested =()=> {
 
     return (
         <div>
-            <Button onClick={handleOpen}
-                    sx={{position: 'fixed',
-                        top: "5%",
-                        left: "0%",
-                        cursor: 'default',
-                        hover: "transparent",
-
-                    }}/>
+            <Button onClick={handleOpen} style={{cursor: 'default' }}><Avatar
+                alt="logo"
+                src={IntiveLogo}
+                style={{height: '60px',
+                        width: '60px',
+                        cursor: 'default'
+                        }}
+            /></Button>
 
 
             <Modal

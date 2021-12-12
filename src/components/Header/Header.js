@@ -22,13 +22,13 @@ const Header = () => {
         <Box sx={{flexGrow: 1}}>
             <AppBar position="static">
                 <Toolbar>
-                    <Box>
+                    <Box >
 
-                        <Avatar
-                            alt="logo"
-                            src={IntiveLogo}
-                            style={{height: '60px', width: '60px'}}
-                        />
+                        {/*<Avatar*/}
+                        {/*    alt="logo"*/}
+                        {/*    src={IntiveLogo}*/}
+                        {/*    style={{height: '60px', width: '60px'}}*/}
+                        {/*/>*/}
 
                         <Nested />
                     </Box>
