@@ -44,7 +44,7 @@ export default function HistorySlider() {
                 <Slide direction="left" in={checked} mountOnEnter unmountOnExit>
                     <Box sx={{
                         height: 250,
-
+                        minWidth: 200,
                         overflow: "auto",
                         position: "fixed",
                         right: '5%',

@@ -19,11 +19,7 @@ import {LanguageContext} from "../contexts/LanguageContext";
 
 
 const SearchedText = () => {
-    // const [list, setList] = useState(() => {
-    //     const saved = localStorage.getItem("searchHistory");
-    //     const initialValue = JSON.parse(saved);
-    //     return initialValue || [];
-    // });
+
     const [searchTexts, setSearchTexts] = useContext(SearchTextsContext);
     const [searchParams, setSearchParams] = useContext(SearchParamsContext);
     const [language] = useContext(LanguageContext);

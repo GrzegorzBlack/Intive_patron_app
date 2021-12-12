@@ -2,12 +2,13 @@ import React, {useContext} from "react";
 
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import {makeStyles} from "@material-ui/core";
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import IntiveLogo from "../../../assets/intive_logo.jpg";
 import {LanguageContext} from "../../../contexts/LanguageContext";
 import {Avatar} from "@material-ui/core";
+
+
 
 export const LanguageButtons = () => {
     const [language, setLanguage] = useContext(LanguageContext);
@@ -32,7 +33,7 @@ export const LanguageButtons = () => {
     )
 }
 
-// export const LanguageButtons
+
 
 
 
@@ -125,16 +126,8 @@ const style = {
     pb: 3,
 };
 
-const useStyles = makeStyles({
-    root: {
-        "&:hover": {
-            backgroundColor: "transparent"
-        }
-    }
-});
 
 const Child =()=> {
-
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
         setOpen(true);
@@ -142,10 +135,12 @@ const Child =()=> {
     const handleClose = () => {
         setOpen(false);
     };
-    const classes = useStyles();
+
+
+
     return (
         <React.Fragment>
-            <Button onClick={handleOpen}   sx={{ "&:hover": { backgroundColor: "transparent" }, cursor: 'default' } }><Avatar
+            <Button onDoubleClick={handleOpen}    sx={{ "&:hover": { backgroundColor: "transparent" }, cursor: 'default' } }><Avatar
                 alt="logo"
                 src={IntiveLogo}
                 style={{height: '60px', width: '60px',cursor: 'default'}}
@@ -158,11 +153,12 @@ const Child =()=> {
                 aria-labelledby="child-modal-title"
                 aria-describedby="child-modal-description"
             >
-                <Box sx={{ ...style, width: 200 }}>
+                <Box sx={{ ...style, width: 300 }}>
                     <h2 id="child-modal-title">Znowu to zrobiłeś!</h2>
                     <p id="child-modal-description">
-                        20 punktów dla Griffindoru!
+
                     </p>
+                    <p>20 punktów dla Griffindoru!</p>
                     <Button onClick={handleClose}>Zamknij wiadomość</Button>
                 </Box>
             </Modal>
@@ -199,9 +195,11 @@ export const Nested =()=> {
             >
                 <Box sx={{ ...style, width: 400 }}>
                     <h2 id="parent-modal-title">Gratulacje!</h2>
+
                     <p id="parent-modal-description">
-                        Udało Ci się znaleźć sekret! 10 punktów dla Griffindoru!
+                        Udało Ci się znaleźć sekret!
                     </p>
+                    <p> 10 punktów dla Griffindoru!</p>
                     <Child />
                 </Box>
             </Modal>
